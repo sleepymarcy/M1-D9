@@ -6,7 +6,7 @@ window.onload = function(){
 const displayBingo = function() {
    let bingoContainer = document.getElementById("bingo-container")
 
-   for(let n = 1; n < 77; n++) {
+   for(let n = 1; n <= 76; n++) {
        let newNumber = document.createElement("div")
        newNumber.innerText = n
        newNumber.classList.add("number")
@@ -14,6 +14,21 @@ const displayBingo = function() {
 
        bingoContainer.appendChild(newNumber)
    }
+}
+
+const randomNumberGenerator = function(max, numberOfOutputs){
+    let arr = []
+    for(let n = 1; n <= max; n++){
+        arr.push(n)
+    }
+    let result = []
+
+    for(let n = 1; n <= numberOfOutputs; n++){
+        const random = Math.floor(Math.random()*(max - n))
+        result.push(arr[random])
+        arr[random] = arr[max - n]
+    }
+    return result
 }
 
 const selectNumber = function(event){
